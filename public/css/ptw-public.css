@@ -1,0 +1,403 @@
+  /**
+  * All of the CSS for your public-facing functionality should be
+  * included in this file.
+  */
+
+  /*
+  * Reset some style
+  */
+
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  /* Icon font */
+
+  @font-face {
+      font-family: 'ptw';
+      src: url('fonts/ptw.eot?vt2gfh');
+      src: url('fonts/ptw.eot?vt2gfh#iefix') format('embedded-opentype'), url('fonts/ptw.ttf?vt2gfh') format('truetype'), url('fonts/ptw.woff?vt2gfh') format('woff'), url('fonts/ptw.svg?vt2gfh#ptw') format('svg');
+      font-weight: normal;
+      font-style: normal;
+  }
+  .ptw-icon {
+      /* use !important to prevent issues with browser extensions that change fonts */
+      font-family: 'ptw' !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  .ptw-left-arrow:before {
+      content: "\e900";
+  }
+  .ptw-right-arrow:before {
+      content: "\e901";
+  }
+  .widget-periodic-table .element_container h4, .widget-periodic-table p {
+      margin: 0;
+      padding: 0;
+  }
+  .widget-periodic-table table, .widget-periodic-table table td, .widget-periodic-table table th, .widget-periodic-table table tr {
+      border-collapse: collapse;
+      border: none;
+      margin: 0;
+      border-radius: 0px;
+      background: transparent;
+  }
+  .widget-periodic-table .element_container li, .widget-periodic-table .element_container ul {
+      margin: 0;
+      padding: 0;
+      border: none;
+      list-style: none;
+  }
+  .widget-periodic-table .element_container table {
+      width: 100%;
+      background: transparent;
+  }
+  .widget-periodic-table .element_container a, .widget-periodic-table .element_container a:hover, .widget-periodic-table .element_container a:focus, .widget-periodic-table .element_container a:active {
+      box-shadow: none;
+      outline: none;
+  }
+  /**
+  * Stracture of the widget
+  */
+
+  .widget-periodic-table {
+      width: 100%;
+      font-weight: 400;
+      max-width: 350px;
+      height: auto;
+  }
+  .widget-periodic-table.widget .widget-inner {
+      margin: 0.625rem 0px;
+  }
+  .periodicTable {
+      visibility: hidden;
+  }
+  .widget-periodic-table .widget-inner {
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+  }
+  .widget-periodic-table .element_container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+      border: 0.0625rem solid;
+  }
+  .widget-periodic-table .element_header {
+      position: relative;
+      z-index: 5;
+  }
+  .widget-periodic-table .element_header h4 {
+      padding: 0.31em 0.625em;
+  }
+  .widget-periodic-table .element_content {
+      padding: 0.625em;
+  }
+  .widget-periodic-table .element_details {
+      position: absolute;
+      left: 0px;
+      top: 0;
+      bottom: 0px;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      transition: all 0.3s ease-in;
+      padding: 10px 25px;
+      padding-top: 50px;
+      opacity: 1;
+      border: 0.0625rem solid;
+      overflow: auto;
+  }
+  .widget-periodic-table .element_details.closed {
+      left: 100%;
+      top: 0;
+      bottom: 0px;
+      opacity: 0;
+      transition: all 0.4s ease-out;
+  }
+  .widget-periodic-table .element_summary {
+      display: none;
+  }
+  .widget-periodic-table .atom_container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0.625em;
+  }
+  .widget-periodic-table .table_bottom th, .widget-periodic-table .table_bottom tr, .widget-periodic-table .table_bottom td {
+      text-align: center;
+  }
+  /**
+  * Widget Header
+  */
+
+  .widget-periodic-table .element_header h4 {
+      font-size: 150%;
+      text-transform: uppercase;
+      font-weight: 300;
+      border-bottom: 0.0625rem solid;
+  }
+  .widget-periodic-table .more_toggle {
+      position: absolute;
+      right: 0.0625rem;
+      top: 50%;
+      margin-top: -0.6875rem;
+      z-index: 10;
+  }
+  .widget-periodic-table .element_details li a:hover {
+      text-decoration: underline;
+  }
+  .widget-periodic-table .more_toggle span {
+      display: block;
+      height: 0.13rem;
+      width: 1.5625rem;
+      margin: 0.25rem 0px;
+      transition: 0.4s;
+  }
+  .widget-periodic-table .change .bar1 {
+      -webkit-transform: rotate(-45deg) translate(-0.3125rem, 0.3125rem);
+      transform: rotate(-45deg) translate(-0.3125rem, 0.3125rem);
+  }
+  .widget-periodic-table .change .bar2 {
+      opacity: 0;
+  }
+  .widget-periodic-table .change .bar3 {
+      -webkit-transform: rotate(45deg) translate(-0.1875rem, -0.1875rem);
+      transform: rotate(45deg) translate(-0.1875rem, -0.1875rem);
+  }
+  /**
+  * Widget Atom
+  *
+  */
+
+  .widget-periodic-table .atom {
+      position: relative;
+      display: inline-block;
+  }
+  .widget-periodic-table .atom sub, .widget-periodic-table .atom sup {
+      font-size: 250%;
+      line-height: 1;
+  }
+  .widget-periodic-table .atom .symbol {
+      font-size: 600%;
+      position: relative;
+      font-weight: bold;
+      line-height: 1;
+  }
+  .widget-periodic-table .atom .mass {
+      position: absolute;
+      display: block;
+      right: 100%;
+      top: 0px;
+  }
+  .widget-periodic-table .atom .proton {
+      position: absolute;
+      right: 100%;
+      bottom: 0px;
+      top: 70%;
+  }
+  .widget-periodic-table .atom .charge {
+      position: absolute;
+      left: 100%;
+      top: 0px;
+  }
+  .widget-periodic-table .atom .state {
+      position: absolute;
+      left: 100%;
+      top: 70%;
+      bottom: 0px;
+  }
+  /*
+* Widget Table
+*
+*/
+
+  .widget-periodic-table table {
+      width: 100%;
+      max-width: 100%;
+  }
+  .widget-periodic-table table.table_top {
+      margin-bottom: 15px;
+  }
+  .widget-periodic-table table.table_bottom {
+      margin-top: 15px;
+  }
+  .widget-periodic-table table td, .widget-periodic-table table th {
+      vertical-align: middle;
+      padding: 0.4em;
+  }
+  .widget-periodic-table table, .widget-periodic-table table tr, .widget-periodic-table table th, .widget-periodic-table table td {
+      border: 0.07em dotted;
+  }
+  .widget-periodic-table table.table_top td, .widget-periodic-table table.table_top th {
+      width: 50%;
+  }
+  .widget-periodic-table table.table_top td, .widget-periodic-table table.table_top th, .widget-periodic-table table.table_bottom td, .widget-periodic-table table.table_bottom th {
+      background: transparent;
+  }
+  .widget-periodic-table table .left_align {
+      text-align: left;
+  }
+  .widget-periodic-table table .right_align {
+      text-align: right;
+  }
+  /**
+  * Atom content
+  *
+  */
+
+  .widget-periodic-table .box p {
+      position: absolute;
+      right: 101%;
+      top: 0;
+      z-index: 9999;
+      width: 300px;
+      height: auto;
+      padding: 10px 20px;
+      text-align: left;
+      display: none;
+      box-shadow: 0px 0px 5px 1px #eee;
+  }
+  .widget-periodic-table .box p[dataStyle] {
+      border: 1px solid;
+  }
+  .widget-periodic-table .box .drop_cap {
+      font-weight: 700;
+      float: left;
+      font-size: 75px;
+      line-height: 60px;
+      padding-top: 4px;
+      padding-right: 8px;
+      padding-left: 3px;
+  }
+  /**
+  * Element Details
+  *
+  */
+
+  .widget-periodic-table .element_details li {
+      padding: 5px 0px;
+      text-align: left;
+      border-bottom: 1px dotted;
+      font-size: 85%;
+  }
+  .widget-periodic-table .element_details li span {
+      width: 50%;
+      display: inline-block;
+      text-transform: capitalize;
+  }
+  .widget-periodic-table .element_details li span:first-child {
+      font-weight: 700;
+  }
+  .widget-periodic-table .bx-wrapper .bx-controls-direction a {
+      position: absolute;
+      top: 50%;
+      outline: 0;
+      box-shadow: none;
+  }
+  .widget-periodic-table .bx-wrapper .bx-prev {
+      left: 2px;
+  }
+  .widget-periodic-table .bx-wrapper .bx-next {
+      right: 2px;
+  }
+  .widget-periodic-table .bx-wrapper .bx-prev.disabled, .widget-periodic-table .bx-wrapper .bx-next.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+  }
+  .widget-periodic-table .bx-wrapper .bx-controls-direction a .ptw-icon {
+      font-size: 150%;
+      width: 30px;
+      height: 30px;
+  }
+  .widget-periodic-table .bx-wrapper .bx-pager {
+      text-align: center;
+      margin: 5px 0px;
+  }
+  .widget-periodic-table .theme-dynamic .bx-wrapper .bx-next, .widget-periodic-table .theme-dynamic .bx-wrapper .bx-prev {
+      mix-blend-mode: exclusion;
+      color: #ffffff;
+  }
+  /**
+    * Theme of the widget (Default)(light)
+    *
+    */
+
+  .widget-periodic-table .theme-light .element_container, .widget-periodic-table .theme-light .element_details, .widget-periodic-table .theme-light .box p {
+      background-color: #fff;
+      color: #333;
+      border-color: #ddd;
+  }
+  .widget-periodic-table .theme-light .element_header h4 {
+      background-color: #eee;
+      color: #333;
+      border-bottom-color: #ddd;
+  }
+  .widget-periodic-table .theme-light .element_details li {
+      border-bottom-color: #ddd;
+  }
+  .widget-periodic-table .theme-light .element_details li a {
+      color: #333;
+  }
+  .widget-periodic-table .theme-light .element_details li a:hover {
+      color: #222;
+      text-decoration: underline;
+  }
+  .widget-periodic-table .theme-light .more_toggle span {
+      background-color: #333;
+  }
+  .widget-periodic-table .theme-light .atom .symbol {
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  }
+  .widget-periodic-table .theme-light table td, .widget-periodic-table .theme-light table tr, .widget-periodic-table .theme-light table th {
+      border-color: #ddd;
+  }
+  .widget-periodic-table .theme-light .bx-wrapper .bx-next .ptw-icon, .widget-periodic-table .theme-light .bx-wrapper .bx-prev .ptw-icon {
+      color: #333;
+  }
+  /**
+    * Theme of the widget (Dark)
+    *
+    */
+
+  .widget-periodic-table .theme-dark .element_container, .widget-periodic-table .theme-dark .element_details, .widget-periodic-table .theme-dark .box p {
+      background-color: #222;
+      color: #fefefe;
+      border-color: #595959;
+  }
+  .widget-periodic-table .theme-dark .element_header h4 {
+      background-color: #111;
+      color: #fefefe;
+      border-bottom-color: #595959;
+  }
+  .widget-periodic-table .theme-dark .element_details li {
+      border-bottom-color: #999;
+  }
+  .widget-periodic-table .theme-dark .element_details li a {
+      color: #fff;
+  }
+  .widget-periodic-table .theme-dark .element_details li a:hover {
+      color: #eee;
+      text-decoration: underline;
+  }
+  .widget-periodic-table .theme-dark .more_toggle span {
+      background: #fefefe;
+  }
+  .widget-periodic-table .theme-dark .atom .symbol {
+      text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.5);
+  }
+  .widget-periodic-table .theme-dark table td, .widget-periodic-table .theme-dark table tr, .widget-periodic-table .theme-dark table th {
+      border-color: #999;
+  }
+  .widget-periodic-table .theme-dark .bx-wrapper .bx-next .ptw-icon, .widget-periodic-table .theme-dark .bx-wrapper .bx-prev .ptw-icon {
+      color: #fff;
+  }
